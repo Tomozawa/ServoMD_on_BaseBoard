@@ -1,0 +1,4 @@
+../Core/Inc/CRSLib/CMSIS/src/cmsis_for_cpp.c:6:10:stew_load_link_32	24	static,ignoring_inline_asm
+../Core/Inc/CRSLib/CMSIS/src/cmsis_for_cpp.c:11:10:stew_store_conditional_32	32	static,ignoring_inline_asm
+../Core/Inc/CRSLib/CMSIS/src/cmsis_for_cpp.c:16:6:stew_enable_irq	4	static,ignoring_inline_asm
+../Core/Inc/CRSLib/CMSIS/src/cmsis_for_cpp.c:21:6:stew_disable_irq	4	static,ignoring_inline_asm

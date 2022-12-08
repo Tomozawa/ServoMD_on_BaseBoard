@@ -35,7 +35,7 @@
 ![circuit.png](circuit.png)
 
 ```math
-I_{peak} \geq \fraq{5\,\mathrm{[V]}}{R\,\mathrm{[\ohm]}} \,\text{(ただし$I_{peak}$はBaseBoardに載っているレギュレーターの最大電流)}
+I_{peak} > \fraq{5\,\mathrm{[V]}}{R\,\mathrm{[\ohm]}} \,\text{(ただし$I_{peak}$はBaseBoardに載っているレギュレーターの最大電流)}
 ```
 ただし、複数のサーボモーターを駆動する場合、それぞれのモーターについて右辺を計算し、それらの和がIpeakを超えないようにしてください。
 
