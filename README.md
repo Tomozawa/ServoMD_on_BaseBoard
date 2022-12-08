@@ -44,7 +44,7 @@ I_{peak} > \fraq{5\,\mathrm{[V]}}{R\,\mathrm{[\ohm]}} \,\text{(ただし$I_{peak
 - レギュレーター: L78M05(Ipeakを0.6Aと仮定)
 
 ```math
-R = 9.1 \leq \frac{5}{0.6}
+R = 9.1 \leq \frec{5}{0.6}
 ```
 
 なお、抵抗を選定する際は抵抗の消費電力に注意してください。<span style="color: red; font-size: large;">基本的にカーボン抵抗は使用できません。</span>
