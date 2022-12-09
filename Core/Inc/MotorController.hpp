@@ -19,7 +19,14 @@ namespace servo_md{
 				}
 			}
 
+			inline static void trigger_update(void){
+				for(MotorController_Base controller : instances){
+					controller.update();
+				}
+			}
+
 			virtual void emergency_callback(void){throw std::logic_error("emergency_callback is not implemented");}
+			virtual void update(void){}
 	};
 
 	//以下のクラスが要実装
@@ -33,7 +40,7 @@ namespace servo_md{
 
 			//パラメーターの値を読み込み、それに従ってモーターに出力する関数
 			//定期的に呼ばれる
-			void update();
+			void update() override;
 
 			//Emergencyスイッチが扱われたときに呼ばれるコールバック関数
 			void emergency_callback(void) override;
