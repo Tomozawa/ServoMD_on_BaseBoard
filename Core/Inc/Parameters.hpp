@@ -11,16 +11,14 @@ namespace servo_md{
 	enum class MD_MODE{
 		//起動直後やEmergencyスイッチが押されたときのモードです。
 		//モーターは一切動作しません
-		//ステッピングMDのENA信号はLOWになっています
 		DEFAULF,
 
-		//位置制御モード
-		POS
+		//制御可能
+		ENABLE
 	};
 
 	//モーター制御に用いるパラメーターをまとめて定義した構造体
 	struct MotorParam{
-		//PID制御は用いない
 
 		//MDのモード
 		MD_MODE mode;
