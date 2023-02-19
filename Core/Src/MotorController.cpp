@@ -4,6 +4,8 @@
 
 namespace servo_md
 {
+	std::list<MotorController*> MotorController::pInstances;
+
 	//角度からPWMのパルス幅を計算する関数
     void MotorController::set_angle(float angle)
     {
@@ -18,8 +20,16 @@ namespace servo_md
         this->params = parameters;
     }
 
+    void MotorController::trigger_emergency_callback(void){
+    	for(MotorController* pInstance : pInstances){
+    		pInstance->emergency_callback();
+    	}
+    }
 
-
-
+    void MotorController::trigger_update(void){
+    	for(MotorController* pInstance : pInstances){
+    		pInstance->update();
+    	}
+    }
 
 } // namespace servo_md

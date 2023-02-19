@@ -1,1 +1,8 @@
-../Core/Src/wrapper.cpp:3:6:void wrapper_cpp()	4	static
+c:\st\stm32cubeide_1.9.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127\tools\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7-m/nofp/bits/gthr-default.h:229:1:int __gthread_key_delete(__gthread_key_t)	16	static
+../Core/Inc/Parameters.hpp:48:13:servo_md::Parameters::Parameters()	16	static
+../Core/Inc/MotorController.hpp:44:13:servo_md::MotorController::MotorController(TIM_HandleTypeDef*, servo_md::Parameters&, long unsigned int, uint8_t, uint16_t, uint16_t, uint16_t)	32	static
+../Core/Src/wrapper.cpp:57:6:void wrapper_cpp()	136	static
+../Core/Src/wrapper.cpp:229:6:void common_cmd_callback(uint8_t, servo_md::Parameters&)	32	static
+../Core/Src/wrapper.cpp:244:6:void common_target_callback(float, servo_md::Parameters&)	32	static
+../Core/Src/wrapper.cpp:253:15:long unsigned int get_general_tim_clock()	16	static
+../Core/Src/wrapper.cpp:260:15:long unsigned int get_advanced_tim_clock()	16	static

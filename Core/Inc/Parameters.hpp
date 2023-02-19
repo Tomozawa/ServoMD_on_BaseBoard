@@ -11,10 +11,11 @@ namespace servo_md{
 	enum class MD_MODE{
 		//起動直後やEmergencyスイッチが押されたときのモードです。
 		//モーターは一切動作しません
-		DEFAULF,
+		DEFAULT = 0,
+		DISABLE = 1,
 
 		//制御可能
-		ENABLE
+		ENABLE = 4
 	};
 
 	//モーター制御に用いるパラメーターをまとめて定義した構造体
@@ -27,33 +28,28 @@ namespace servo_md{
 		float target;
 	};
 
-	//Parametersに最低限必要な実装
-	//基本的にはそのままにしておくこと
-	class Parameters_Base{
-		private:
-			static std::list<Parameters_Base> instances;
-		protected:
-			explicit Parameters_Base(){instances.push_back(*this);}
-		public:
-			inline static void trigger_emergency_callback(void){
-				for(Parameters_Base controller : instances){
-					controller.emergency_callback();
-				}
-			}
-
-			virtual void emergency_callback(void){throw std::logic_error("emergency_callback is not implemented");}
-	};
-
 	//パラメーターの書き込み・読み込みを行うクラス
 	//要実装
-	class Parameters : public Parameters_Base{
+	class Parameters{
+		private:
+			uint16_t BID;
+			//Parameters上で扱うMD_MODEとpprとtargetのメンバ変数
+			MotorParam SMParam;
+
+			static std::list<Parameters*> pInstances;
+
+			//Emergencyボタンが押されたときに呼ばれるコールバック関数
+			void emergency_callback(void){
+				SMParam.mode = MD_MODE::DEFAULT;
+			}
+
 		public:
 			//コンストラクタ(引数やオーバーロードは自由に決めてよい)
 			explicit Parameters(){}
 
 			//パラメータを取得する関数
 			//第1引数は結果を格納する構造体オブジェクトへのポインタ
-			void get_motor_params(MotorParam* param);
+			MotorParam get_motor_params();
 
 			//パラメータを設定する関数
 			//第1引数は設定内容が書かれた構造体オブジェクト
@@ -65,7 +61,6 @@ namespace servo_md{
 			//BIDを設定する関数
 			void set_BID(const uint32_t bid);
 
-			//Emergencyボタンが押されたときに呼ばれるコールバック関数
-			void emergency_callback(void) override;
+			static void trigger_emergency_callback(void);
 	};
 }

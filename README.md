@@ -77,4 +77,4 @@ modeの種類とそれぞれのmodeに対応するcmdの値およびtargetの意
 | MODE | cmdの値 | TARGET |
 | ------- | ------- | ------- |
 | DEFAULT | 0または1 | 無効 |
-| POS | 4 | 目標位置(rad) |
+| ENABLE | 4 | 目標位置(rad) |

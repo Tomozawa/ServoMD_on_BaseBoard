@@ -2,3 +2,39 @@
 //将来の拡張性のため作成
 //現時点ではほとんど受け取った値を返すのみのクラス
 #include<Parameters.hpp>
+
+namespace servo_md{
+	std::list<Parameters*> Parameters::pInstances;
+
+    //パラメータを取得する関数
+	//第1引数は結果を格納する構造体オブジェクトへのポインタ
+	MotorParam Parameters::get_motor_params()
+    {
+        return SMParam;
+    }
+
+	//パラメータを設定する関数
+	//第1引数は設定内容が書かれた構造体オブジェクト
+	void Parameters::set_motor_param(const MotorParam& param)
+    {
+        SMParam = param;
+    }
+
+	//BIDを取得する関数
+	uint32_t Parameters::get_BID()
+    {
+        return BID;
+    }
+
+	//BIDを設定する関数
+	void Parameters::set_BID(const uint32_t bid)
+    {
+        BID = bid;
+    }
+
+	void Parameters::trigger_emergency_callback(void){
+		for(Parameters* pParameters : pInstances){
+			pParameters->emergency_callback();
+		}
+	}
+}

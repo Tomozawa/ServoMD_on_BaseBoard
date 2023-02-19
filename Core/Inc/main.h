@@ -59,6 +59,15 @@ void wrapper_cpp(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define LED_CAN_Pin GPIO_PIN_14
+#define LED_CAN_GPIO_Port GPIOC
+#define LED0_Pin GPIO_PIN_0
+#define LED0_GPIO_Port GPIOB
+#define LED1_Pin GPIO_PIN_1
+#define LED1_GPIO_Port GPIOB
+#define EMS_Pin GPIO_PIN_10
+#define EMS_GPIO_Port GPIOB
+#define EMS_EXTI_IRQn EXTI15_10_IRQn
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

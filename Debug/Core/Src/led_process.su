@@ -1,0 +1,5 @@
+../Core/Src/led_process.cpp:13:7:void servo_md::led_mgr::led_process()	40	static
+../Core/Src/led_process.cpp:65:7:void servo_md::led_mgr::blink_can_led()	8	static
+../Core/Src/led_process.cpp:71:7:void servo_md::led_mgr::increase_enabled_motor()	8	static
+../Core/Src/led_process.cpp:79:7:void servo_md::led_mgr::decrease_enabled_motor()	4	static
+../Core/Src/led_process.cpp:83:7:void servo_md::led_mgr::disable_all_motor()	4	static
