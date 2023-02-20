@@ -50,7 +50,7 @@ namespace servo_md{
 				uint16_t pwm_pulse_min=500,//microsec
 				uint16_t pwm_pulse_max=2400//microsec
 			): pwm_tim(pwm_tim), pwm_channel(pwm_channel), params(params){
-
+/// @attention プリスケール後の周波数は1MHz以下のすること
 				//カウンタの増加周期　　microsec/回
 				const uint16_t count_up_period = 1000000/(source_clock/(pwm_tim->Instance->PSC + 1));
 
@@ -60,6 +60,7 @@ namespace servo_md{
 
 				HAL_TIM_PWM_Start(pwm_tim, pwm_channel);
 
+				pInstances.push_back(this);
 			}
 
 			//パラメーターを保持する保管庫的なクラスを登録する関数

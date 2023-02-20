@@ -61,7 +61,7 @@ void wrapper_cpp(void){
 
 //	CanManager can_mgr(&hcan);
 	Parameters parameters[MOTOR_NUM];
-	MotorController(&htim1, parameters[A], get_advanced_tim_clock(), TIM_CHANNEL_1, pwm_cycle, pwm_pulse_min, pwm_pulse_max);
+	MotorController(&htim1, parameters[A], get_general_tim_clock(), TIM_CHANNEL_1, pwm_cycle, pwm_pulse_min, pwm_pulse_max);
 	MotorController(&htim2, parameters[C], get_general_tim_clock());
 #if !defined EMSBoard_1_0
 	MotorController(ENAE_Pin, ENAE_GPIO_Port, DIRE_Pin, DIRE_GPIO_Port, error_threshold, &htim3, parameters[E], get_general_tim_clock());
@@ -205,7 +205,6 @@ void wrapper_cpp(void){
 	//CANスタート
 	HAL_CAN_Start(&hcan);
 */
-	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
 
 	MotorParam paramA = parameters[A].get_motor_params();
 	paramA.target = 0.5f * std::numbers::pi;
@@ -262,4 +261,10 @@ unsigned long get_advanced_tim_clock(){
 	result = HAL_RCC_GetPCLK2Freq();
 	if(((RCC->CFGR & RCC_CFGR_PPRE2)>>11) >= 0b100) result *= 2; //APB2プリスケーラーが/1以外の時はタイマクロックはPCLK2の2倍
 	return result;
+}
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
+	if(GPIO_Pin == EMS_Pin){
+			if(IS_EMERGENCY()) error_request_flag = true;
+	}
 }
